@@ -12,8 +12,9 @@ mp4Controllers.controller('FirstController', ['$scope', 'CommonData'  , function
 
 }]);
 
-mp4Controllers.controller('SecondController', ['$scope', 'CommonData' , function($scope, CommonData) {
-  $scope.data = "";
+mp4Controllers.controller('UserDetailsController', ['$scope', 'CommonData', 'routeParams' , function($scope, CommonData,  $routeParams) {
+  $scope.data = "bungo";
+  $scope.id = $routeParams.id;
 
   $scope.getData = function(){
     $scope.data = CommonData.getData();
@@ -23,10 +24,10 @@ mp4Controllers.controller('SecondController', ['$scope', 'CommonData' , function
 }]);
 
 
-mp4Controllers.controller('LlamaListController', ['$scope', '$http', 'Llamas', '$window' , function($scope, $http,  Llamas, $window) {
+mp4Controllers.controller('UserListController', ['$scope', '$http', 'Users', '$window' , function($scope, $http,  Users, $window) {
 
-  Llamas.get().success(function(data){
-    $scope.llamas = data;
+  Users.get().success(function(data){
+    $scope.users = data;
   });
 
 
@@ -37,7 +38,7 @@ mp4Controllers.controller('SettingsController', ['$scope' , '$window' , function
 
   $scope.setUrl = function(){
     $window.sessionStorage.baseurl = $scope.url;
-    $scope.displayText = "URL set";
+    $scope.displayText = "URL set: " + $window.sessionStorage.baseurl;
 
   };
 

@@ -1,0 +1,10 @@
+<div class="list">
+	<ul>
+		<li ng-repeat="user in users.data">
+			<a href="./#/userdetails/{{user._id}}">
+				<h3>{{user.name}}</h3>
+				<h6>{{user.email}}</h6>
+			</a>
+		</li>
+	</ul>
+</div>
