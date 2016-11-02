@@ -1,19 +1,28 @@
 var mp4Controllers = angular.module('mp4Controllers', []);
 
-mp4Controllers.controller('FirstController', ['$scope', 'CommonData'  , function($scope, CommonData) {
-  $scope.data = "";
+mp4Controllers.controller('AddUserController', ['$scope', 'Users'  , function($scope, Users) {
+  $scope.username = "";
+  $scope.email = "";
    $scope.displayText = ""
 
-  $scope.setData = function(){
-    CommonData.setData($scope.data);
-    $scope.displayText = "Data set"
-
+  $scope.addUser = function(){ 
+    if ($scope.username != "" && validateEmail($scope.email)){ 
+      var update = Users.addUser($scope.username, $scope.email);
+      update.then(function(response) {
+          $scope.displayText = response;
+      });
+    }
   };
 
+  //Taken from http://stackoverflow.com/questions/46155/validate-email-address-in-javascript
+  function validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+  }
 }]);
 
-mp4Controllers.controller('UserDetailsController', ['$scope', 'CommonData', 'routeParams' , function($scope, CommonData,  $routeParams) {
-  $scope.data = "bungo";
+mp4Controllers.controller('UserDetailsController', ['$scope', 'CommonData', '$routeParams' , function($scope, CommonData,  $routeParams) {
+  $scope.data = "";
   $scope.id = $routeParams.id;
 
   $scope.getData = function(){

@@ -13,12 +13,23 @@ mp4Services.factory('CommonData', function(){
 });
 
 mp4Services.factory('Users', function($http, $window) {
+    var getLogic = function() {
+        var baseUrl = $window.sessionStorage.baseurl;
+        return $http.get(baseUrl+'/api/users');
+    };
+    var getUserLogic = function(id) {
+        var baseUrl = $window.sessionStorage.baseurl;
+        return $http.get(baseUrl+'/api/users?where={"_id": ' + id + '"}');
+    };
+    var addUserLogic = function(nameinput, emailinput) {
+        var baseUrl = $window.sessionStorage.baseurl;
+        return $http.post(baseUrl+'/api/users', { name: nameinput, email: emailinput});
+    };
     return {
-        get : function() {
-            var baseUrl = $window.sessionStorage.baseurl;
-            return $http.get(baseUrl+'/api/users');
-        }
-    }
+        get: getLogic,
+        getUser: getUserLogic,
+        addUser: addUserLogic
+    };
 });
 
 mp4Services.factory('Tasks', function($http, $window) {

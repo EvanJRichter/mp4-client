@@ -2,9 +2,9 @@ var app = angular.module('mp4', ['ngRoute', 'mp4Controllers', 'mp4Services']);
 
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider.
-    when('/firstview', {
-    templateUrl: 'partials/firstview.html',
-    controller: 'FirstController'
+    when('/adduser', {
+    templateUrl: 'partials/adduser.html',
+    controller: 'AddUserController'
   }).
   when('/userdetails/:id', {
     templateUrl: 'partials/userdetails.html',
