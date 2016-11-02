@@ -21,23 +21,51 @@ mp4Controllers.controller('AddUserController', ['$scope', 'Users'  , function($s
   }
 }]);
 
-mp4Controllers.controller('UserDetailsController', ['$scope', 'CommonData', '$routeParams' , function($scope, CommonData,  $routeParams) {
+mp4Controllers.controller('UserDetailsController', ['$scope', 'Tasks', 'Users', '$routeParams' , function($scope, Tasks, Users,  $routeParams) {
   $scope.data = "";
+  $scope.user = "";
   $scope.id = $routeParams.id;
+  $scope.tasks = [];
+  $scope.showCompleted = false;
 
-  $scope.getData = function(){
-    $scope.data = CommonData.getData();
+  
 
+  Users.getUser($scope.id).success(function(userdata){
+    $scope.user = userdata.data;
+    console.log($scope.user.name);
+    Tasks.getTaskByUserName($scope.user.name).success(function(taskdata){
+      $scope.data = taskdata;
+    });
+  });
+
+  $scope.completeTask = function(task){
+    Tasks.completeTask(task).success(function(data){
+      console.log('task completed')
+    });
   };
+
+  $scope.toggleCompleted = function(){
+    $scope.showCompleted = !$scope.showCompleted;
+  }
+
 
 }]);
 
 
-mp4Controllers.controller('UserListController', ['$scope', '$http', 'Users', '$window' , function($scope, $http,  Users, $window) {
+mp4Controllers.controller('UserListController', ['$scope', '$http', 'Users', 'Tasks', '$window' , function($scope, $http, Users, Tasks, $window) {
 
   Users.get().success(function(data){
     $scope.users = data;
   });
+
+  $scope.deleteUser = function(id){
+    Users.deleteUser(id).success(function(data){ //remove user
+      Tasks.deleteUser(id);                      //remove user references in tasks
+      Users.get().success(function(data){        // get updated user info
+        $scope.users = data;
+      });  
+    })
+  }
 
 
 }]);

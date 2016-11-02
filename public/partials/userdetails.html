@@ -1,13 +1,36 @@
+Details for {{user.name}}  
+email: {{user.email}}  
+
+Pending Tasks
 <div class="list">
-  User Details 
-  <form>
+	<ul>
+		<div ng-repeat="task in data.data">
+			<li ng-if="!task.completed">
+				<a href="./#/taskdetails/{{task._id}}">
+					<h3>{{task.name}}</h3>
+				</a>
+				<h6>{{task.deadline}}</h6>
+				<a ng-click=completeTask(task)>Completed</a>
+			</li>
+		</div>
+	</ul>
+</div>
 
-    <div class="text-center">
-      <button ng-click="getData()" class="button tiny info">Get Data</button>
-    </div>
+<button ng-show="!showCompleted" ng-click="toggleCompleted()">Show Completed</button>
+<button ng-show="showCompleted" ng-click="toggleCompleted()">Hide Completed</button>
 
-    {{data}}
-    {{id}}
 
-  </form>
+<div class="list" ng-show="showCompleted">
+Completed Tasks
+	<ul>
+		<div ng-repeat="task in data.data">
+			<li ng-if="task.completed">
+				<a href="./#/taskdetails/{{task._id}}">
+					<h3>{{task.name}}</h3>
+				</a>
+				<h6>{{task.deadline}}</h6>
+				<!--<a ng-click=completeTask(task._id)>Completed</a>-->
+			</li>
+		</div>
+	</ul>
 </div>
