@@ -1,32 +1,36 @@
-Edit A Task
+<div class="row">
+  <div class="button-group small-8 small-centered columns">
+    <h1>Edit A Task</h1>
 
-<div class="list">
-	<form data-abide>
-	  <div class="row">
-      <div class="small-12 columns">
-        <label>Name<small style="color: red">*</small>
-        <input ng-model="task.name" type="text" required placeholder="name">
-        
-        <label>Description
-        <input ng-model="task.description" type="text" placeholder="description">
-        
-        <label>Deadline<small style="color: red">*</small>
-        <datepicker>
-          <input ng-model="task.deadline" required type="text"/>
-        </datepicker>
-        
-        <label>Assigned User
-        <select ng-model="userchoice" >
-          <option ng-repeat="user in users" value="{{user}}" ng-selected="rightOption(user)">{{user.name}}</option>
-        </select>
-      </div>
+    <div class="list">
+    	<form data-abide>
+    	  <div class="row">
+          <div class="small-12 columns">
+            <label>Name<small style="color: red">*</small>
+            <input ng-model="task.name" type="text" required placeholder="name">
+            
+            <label>Description
+            <input ng-model="task.description" type="text" placeholder="description">
+            
+            <label>Deadline<small style="color: red">*</small>
+            <datepicker>
+              <input ng-model="task.deadline" required type="text"/>
+            </datepicker>
+            
+            <label>Assigned User
+            <select ng-model="userchoice" >
+              <option ng-repeat="user in users" value="{{user}}" ng-selected="rightOption(user)">{{user.name}}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button ng-click="editTask()" type="submit" class="button tiny info">Submit changes</button>
+        </div>
+      </form>
+
+        {{displayText}}
+
     </div>
-
-    <div class="text-center">
-      <button ng-click="editTask()" type="submit" class="button tiny info">Submit changes</button>
-    </div>
-  </form>
-
-    {{displayText}}
-
+  </div>
 </div>

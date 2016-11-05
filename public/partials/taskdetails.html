@@ -1,14 +1,16 @@
-Task Details  
+<div class="row">
+ 	<div class="button-group small-8 small-centered columns">
+		<h1>Task Details  </h1>
+		<h3>Name:</h3> <h6>{{task.name}}</h6>
+		<h3>Deadline:</h3> <h6>{{task.deadline}}</h6>
+		<h3>Assigned to:</h3> <h6>{{task.assignedUserName}}</h6>
+		<h3>Description:</h3> <h6>{{task.description}}</h6>
+		<h3>Completed:</h3> <h6>{{task.completed}}</h6>
 
-<div>
-	<h6>Name: {{task.name}}</h6>
-	<h6>Deadline: {{task.deadline}}</h6>
-	<h6>Assigned to: {{task.assignedUserName}}</h6>
-	<h6>Description: {{task.description}}</h6>
-	<h6>Completed: {{task.completed}}</h6>
-	<a class="button"  ng-show="!task.completed" ng-click=completeTask(true)>Complete Task</a>
-	<a class="button"  ng-show="task.completed" ng-click=completeTask(false)>Re-Open Task</a>
-	<a class="button" href="./#/edittask/{{task._id}}" >Edit Task</a>
+		<a class="button small-3 columns"  ng-show="!task.completed" ng-click=completeTask(true)>Complete Task</a>
+		<a class="button small-3 columns"  ng-show="task.completed" ng-click=completeTask(false)>Re-Open Task</a>
+		<a class="button small-3 columns" href="./#/edittask/{{task._id}}" >Edit Task</a>
+	</div>
 </div>
 
 

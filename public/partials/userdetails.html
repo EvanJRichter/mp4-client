@@ -21,16 +21,17 @@
 
 		<div class="list" ng-show="showCompleted">
 			<h4> Completed Tasks </h4>
-			<ul>
+			<div class="list">
 				<div ng-repeat="task in data.data">
-					<li ng-if="task.completed">
-						<a href="./#/taskdetails/{{task._id}}">
+					<div class="row callout primary" ng-if="task.completed">
+						<a class="small-9 columns" href="./#/taskdetails/{{task._id}}">
 							<h3>{{task.name}}</h3>
+							<h6>Deadline: {{task.deadline}}</h6>
 						</a>
-						<h6>{{task.deadline}}</h6>
-					</li>
+						<a class="button small-3 columns" ng-click=completeTask(task)>Completed</a>
+					</div>
 				</div>
-			</ul>
+			</div>
 		</div>
 	</div>
 </div>

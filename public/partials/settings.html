@@ -1,16 +1,20 @@
-<div class="list">
-	<form>
-	  <div class="row">
-          <div class="small-12 columns">
-            <input ng-model="url" type="text" placeholder="URL">
+<div class="row">
+  <div class="button-group small-8 small-centered columns">
+    <div class="list">
+    	<form>
+    	  <div class="row">
+              <div class="small-12 columns">
+                <input ng-model="url" type="text" placeholder="URL">
+              </div>
           </div>
-      </div>
 
-    <div class="text-center">
-      <button ng-click="setUrl()" class="button tiny info">Set URL</button>
+        <div class="text-center">
+          <button ng-click="setUrl()" class="button tiny info">Set URL</button>
+        </div>
+
+        {{displayText}}
+
+      </form>
     </div>
-
-    {{displayText}}
-
-  </form>
+  </div>
 </div>
