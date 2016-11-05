@@ -1,0 +1,58 @@
+
+<form>
+  <div class="row">
+	<div class="button-group small-8 small-centered columns">
+
+		<fieldset class="fieldset medium-4 columns" ng-init="type=Pending">
+			<label>
+				<input ng-change="changedFilter()" type="radio" ng-model="type" value="All">
+				All
+			</label>
+			<label>
+				<input nng-change="changedFilter()" type="radio" ng-model="type" ng-value="Pending">
+				Pending
+			</label>
+			<label>
+				<input ng-change="changedFilter()" type="radio" ng-model="type" value="Completed">
+				Completed
+			</label>
+		</fieldset>
+	    <fieldset class="fieldset medium-4 columns">
+	    	<select ng-change="changedFilter()" ng-model="sort" ng-init="sort=sortoptions[0]">
+				<option ng-repeat="option in sortoptions" value="{{option}}">{{option}}</option>
+			</select>
+	    </fieldset>
+		<fieldset class="fieldset medium-4 columns" ng-init="ascending=-1">
+			<label>
+				<input ng-click="changedFilter()" type="radio" ng-model="ascending" value="-1">
+				Ascending
+			</label>
+			<label>
+				<input ng-click="changedFilter()" type="radio" ng-model="ascending" ng-value="1">
+				Descending
+			</label>
+		</form>
+	  </div>
+  </div>
+</form>
+
+<div class="row">
+	<div class="button-group small-8 small-centered columns">
+		<a class="button small-3 columns" ng-click="changeStart(-10)" 
+			ng-style="{'visibility': (start > 9)?'visible':'hidden'}">Previous</a>
+		<a class="button small-4 small-push-1 columns" href="./#/addtask">Add Task</a>
+		<a class="button small-3 columns" ng-click="changeStart(10)" 
+			ng-style="{'visibility': tasks.data.length > 9?'visible':'hidden'}" >Next</a>
+	</div>
+</div>
+
+<div class="row">
+	<div class="small-8 small-centered columns">
+	    <div class="row callout primary" ng-repeat="task in tasks.data">
+			<a class="small-9 columns" href="./#/taskdetails/{{task._id}}">
+				<h3>{{task.name}}</h3>
+			</a>
+			<button class="small-3 columns callout alert" ng-click=deleteTask(task._id)>Delete</button>
+		</div>
+	</div>
+</div>

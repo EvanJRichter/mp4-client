@@ -1,20 +1,25 @@
-<div class="list">
-  Add User
-	<form data-abide>
-	  <div class="row">
+
+<div class="row">
+  <div class="button-group small-8 small-centered columns">
+    <div class="list">
+      <h1>Add User</h1>
+    	<form data-abide>
+    	  <div class="row">
           <div class="small-12 columns">
             <label>Name<small style="color: red">*</small>
             <input ng-model="username" type="text" required pattern="[a-zA-Z]+" placeholder="username">
             <label>Email<small style="color: red">*</small>
             <input ng-model="email" type="email" required placeholder="email">
           </div>
-      </div>
+        </div>
 
-    <div class="text-center">
-      <button ng-click="addUser()" type="submit" class="button tiny info">Add User</button>
+        <div class="text-center">
+          <button ng-click="addUser()" type="submit" class="button tiny info">Add User</button>
+        </div>
+      </form>
+
+      <h2>{{displayText}}</h2>
+
     </div>
-  </form>
-
-    {{displayText}}
-
+  </div>
 </div>

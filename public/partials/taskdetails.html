@@ -1,0 +1,14 @@
+Task Details  
+
+<div>
+	<h6>Name: {{task.name}}</h6>
+	<h6>Deadline: {{task.deadline}}</h6>
+	<h6>Assigned to: {{task.assignedUserName}}</h6>
+	<h6>Description: {{task.description}}</h6>
+	<h6>Completed: {{task.completed}}</h6>
+	<a class="button"  ng-show="!task.completed" ng-click=completeTask(true)>Complete Task</a>
+	<a class="button"  ng-show="task.completed" ng-click=completeTask(false)>Re-Open Task</a>
+	<a class="button" href="./#/edittask/{{task._id}}" >Edit Task</a>
+</div>
+
+

@@ -1,13 +1,17 @@
-<a href="./#/adduser">Add User</a>
+<a </a>
 
-<div class="list">
-	<ul>
-		<li ng-repeat="user in users.data">
-			<a href="./#/userdetails/{{user._id}}">
+
+<div class="row">
+	<a class="button small-4 small-push-4 columns" href="./#/adduser">Add User</a>
+	<div class="button-group small-8 small-centered columns">
+		<div class="row callout primary" ng-repeat="user in users.data">
+			<a class="small-9 columns" href="./#/userdetails/{{user._id}}">
 				<h3>{{user.name}}</h3>
 				<h6>{{user.email}}</h6>
 			</a>
-			<a ng-click=deleteUser(user._id)>DELERT</a>
-		</li>
-	</ul>
+			<a class="small-3 columns callout alert" ng-click="deleteUser(user._id)">
+				<h6 class="small-centered">Delete</h6>
+			</a>
+		</div>
+	</div>
 </div>

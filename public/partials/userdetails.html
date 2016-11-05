@@ -1,36 +1,36 @@
-Details for {{user.name}}  
-email: {{user.email}}  
+<div class="row">
+ 	<div class="button-group small-8 small-centered columns">
+		<h1>Details for {{user.name}}</h1>
+		<h3>email: {{user.email}} <h3>
 
-Pending Tasks
-<div class="list">
-	<ul>
-		<div ng-repeat="task in data.data">
-			<li ng-if="!task.completed">
-				<a href="./#/taskdetails/{{task._id}}">
-					<h3>{{task.name}}</h3>
-				</a>
-				<h6>{{task.deadline}}</h6>
-				<a ng-click=completeTask(task)>Completed</a>
-			</li>
+		<h4> Pending Tasks </h4>
+		<div class="list">
+			<div ng-repeat="task in data.data">
+				<div class="row callout primary" ng-if="!task.completed">
+					<a class="small-9 columns" href="./#/taskdetails/{{task._id}}">
+						<h3>{{task.name}}</h3>
+						<h6>Deadline: {{task.deadline}}</h6>
+					</a>
+					<a class="button small-3 columns" ng-click=completeTask(task)>Completed</a>
+				</div>
+			</div>
 		</div>
-	</ul>
-</div>
 
-<button ng-show="!showCompleted" ng-click="toggleCompleted()">Show Completed</button>
-<button ng-show="showCompleted" ng-click="toggleCompleted()">Hide Completed</button>
+		<a class="button" ng-show="!showCompleted" ng-click="toggleCompleted()">Show Completed</a>
+		<a class="button" ng-show="showCompleted" ng-click="toggleCompleted()">Hide Completed</a>
 
-
-<div class="list" ng-show="showCompleted">
-Completed Tasks
-	<ul>
-		<div ng-repeat="task in data.data">
-			<li ng-if="task.completed">
-				<a href="./#/taskdetails/{{task._id}}">
-					<h3>{{task.name}}</h3>
-				</a>
-				<h6>{{task.deadline}}</h6>
-				<!--<a ng-click=completeTask(task._id)>Completed</a>-->
-			</li>
+		<div class="list" ng-show="showCompleted">
+			<h4> Completed Tasks </h4>
+			<ul>
+				<div ng-repeat="task in data.data">
+					<li ng-if="task.completed">
+						<a href="./#/taskdetails/{{task._id}}">
+							<h3>{{task.name}}</h3>
+						</a>
+						<h6>{{task.deadline}}</h6>
+					</li>
+				</div>
+			</ul>
 		</div>
-	</ul>
+	</div>
 </div>
