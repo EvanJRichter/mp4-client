@@ -50,6 +50,7 @@ mp4Controllers.controller('AddTaskController', ['$scope', 'Tasks', 'Users', func
 mp4Controllers.controller('EditTaskController', ['$scope', 'Tasks', 'Users', '$routeParams', function($scope, Tasks, Users, $routeParams) {
   $scope.id = $routeParams.id;
   $scope.task = "";
+  $scope.displayText = "";
   $scope.userchoice = "";
   $scope.users = [];
 
@@ -73,6 +74,7 @@ mp4Controllers.controller('EditTaskController', ['$scope', 'Tasks', 'Users', '$r
     if ($scope.task.name != "" && $scope.task.deadline != ""){ 
       $scope.userchoice = JSON.parse($scope.userchoice);
       Tasks.editTask($scope.task, $scope.userchoice.name, $scope.userchoice._id ).then(function(response) {
+          console.log("changing display text to ", response.data.message)
           $scope.displayText = response.data.message;
           $scope.initTask();
       });

@@ -16,7 +16,7 @@ mp4Services.factory('Users', function($http, $window) {
     var baseUrl = $window.sessionStorage.baseurl;
 
     var getLogic = function() {
-        return $http.get(baseUrl+'/api/users');
+        return $http.get(baseUrl+'/api/users?select={"name": 1, "email": 1}');
     };
     var getUserLogic = function(id) {
         return $http.get(baseUrl+'/api/users/'+id);
